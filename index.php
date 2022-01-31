@@ -53,6 +53,10 @@ if (is_writable($result)) {
     echo "On peut écrire ";
 }
 
+$tableau = [1,2,3,4,5,6,7,8,9,10];
 
+for ($i =0; $i < count($tableau); $i++) {
+    echo "J'ai trouvé" . $tableau[$i] . '<br>';
+}
 
 
