@@ -1,15 +1,22 @@
 <?php
 session_start();
-setcookie('username',$_POST['name'], time() + 3600 * 24, '/', 'localhost', true, true);
-$_SESSION['username'] = $_POST['name'];
+if (isset($_POST['name']) && isset($_POST['password'])) {
+    $username =strip_tags(trim($_POST['name']));
+    $password = strip_tags($_POST['password']);
+}
+
 $username = $_POST['name'];
+setcookie('username',$username, time() + 3600 * 24, '/', 'localhost', true, true);
+$_SESSION['username'] = $_POST['name'];
 
 foreach ($_COOKIE AS $cookieName => $cookieValue) {
     echo "$cookieName => $cookieValue <br>";
+    $utilisateur = $cookieValue;
+    echo $utilisateur . '<br>';
 }
 
 if (isset($_SESSION['username'])) {
-    echo 'Salutation '. $_SESSION['username'];
+    echo 'Salutation '. $_SESSION['username'] . '<br>';
 }
 
 $timeOfSession = 60 * 60 * 24;
@@ -43,6 +50,6 @@ if (isset($_POST['log'])) {
 }
 
 if (isset($_GET['relog'])) {
-    $_SESSION['username'] = $username;
-    echo 'Vous avez été reconnecté' . $_SESSION['username'];
+    $_SESSION['username'] = $utilisateur;
+    echo 'Vous avez été reconnecté ' . $_SESSION['username'];
 }

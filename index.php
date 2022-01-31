@@ -31,10 +31,6 @@ $chainee = wordwrap($chainee, 10, "<br>");
 </form>
 
 <?php
-if (isset($_POST['name']) && isset($_POST['password'])) {
-    $username =strip_tags(trim($_POST['name']));
-    $password = strip_tags($_POST['password']);
-}
 
 $file = 'monFichier.txt';
 if (file_exists($file)) {
