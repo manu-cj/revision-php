@@ -2,7 +2,7 @@
 session_start();
 
 $monMot = "Aujourd'hui nous sommes le 15";
-$monMot = addcslashes($monMot) . "<br>";
+$monMot = addcslashes($monMot, '*') . "<br>";
 echo filter_var($monMot, FILTER_SANITIZE_ADD_SLASHES);
 
 $mots = explode(" ", $monMot);
@@ -46,7 +46,7 @@ if ($result) {
     echo 'renomé';
 }
 else {
-    echo 'Oh mince on ne peut le renommer';
+    echo 'Oh mince on ne peut le renommer<br>';
 }
 
 if (is_writable($result)) {
