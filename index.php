@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $monMot = "Aujourd'hui nous sommes le 15";
 $monMot = addcslashes($monMot) . "<br>";
 echo filter_var($monMot, FILTER_SANITIZE_ADD_SLASHES);
@@ -20,7 +22,7 @@ $chainee = wordwrap($chainee, 10, "<br>");
 
 ?>
 
-<form method="post" action="index.php">
+<form method="post" action="profil.php">
     <label for="username">name :</label>
     <input type="text" name="name">
     <label for="password">password :</label>
@@ -48,6 +50,13 @@ if ($result) {
     echo 'renomé';
 }
 else {
-    'Oh mince on ne peut le renommer';
+    echo 'Oh mince on ne peut le renommer';
 }
+
+if (is_writable($result)) {
+    echo "On peut écrire ";
+}
+
+
+
 
